@@ -107,13 +107,12 @@ async function fetchBingWallpaper(region, resolution) {
     'Accept-Language': languagePreferences.join(', ') 
   });
 
-  try {
-    const response = await fetch(
-      `https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&cc=${region}`,
-      {
-        headers: headers
-      }
-    );
+  const response = await fetch(
+    `https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&cc=${region}`,
+    {
+      headers: headers
+    }
+  );
   const data = await response.json();
   if (data.images.length === 0) {
     throw new Error('No wallpaper available');
